@@ -1,0 +1,71 @@
+\documentclass[12pt]{amsart}
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{ marvosym }
+\usepackage{wasysym}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\newcommand{\ds}{\displaystyle}
+\DeclareMathOperator{\sech}{sech}
+
+
+\setlength{\parindent}{0in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape Optiver Prove it} \hfill {\scshape \large Terminating Dice Sums} \hfill {\scshape Week 3}
+
+\smallskip
+
+\hrule
+
+\bigskip
+Let' start by proving that
+\begin{equation}
+    \lim_{n \to \infty} \left(1 +\frac{1}{n}\right)^{n-1} = e.
+\end{equation}
+This is fairly trivial, in fact
+\begin{equation}
+    \lim_{n \to \infty} \left(1 +\frac{1}{n}\right)^{n-1} = \lim_{n \to \infty} \left(1 +\frac{1}{n}\right)^{n-1} \left( 1+\frac{1}{n} \right)  =\lim_{n \to \infty}  \left(1 +\frac{1}{n}\right)^{n} = e
+\end{equation}
+Where we used the fact that in the reals, the limit of a product of limits is equal to the limit of the products.
+
+
+Let's move now onto the main problem. We are interest in deciding whether it's more likely to win as the person who starts throwing the dice or not.
+
+Let's define \(P(X=k)\) as the probability of winning at the throw number \(k\).
+We can now compute it as follows
+\begin{equation}
+    P(X = k) = P(X>k-1) - P(X>k).
+\end{equation}
+Where we used the fact that we are in a discrete setting.
+Moreover, we have an explicit formulation for the probabilities above. It follows
+that
+\begin{equation}
+    P(X=k) = \frac{1}{6^k }\left( 6 {5 \choose k-1} - {5 \choose k} \right).
+\end{equation}
+Computing the value for \(k=2\), we get
+\begin{equation}
+    P(X=2)=\frac{1}{6^2}20 >\frac{1}{2}.
+\end{equation}
+As the probability is bigger than \(\frac{1}{2}\) we can already conclude that going as second gives the higher chances of winning.
+
+\end{document}
