@@ -25,9 +25,9 @@ Since we do 2 call to `rand7` per sample, on average we expect to do 2.45 calls 
 
 
 ## Alternative solution
-The key idea is not to generate two values at the same time but first generate the first value, if it's 7 then discard it until we have a value $a<7$. Then the second value $b$ can be $\le 5$ since %(6-1)*7=35$. 
+The key idea is not to generate two values at the same time but first generate the first value, if it's 7 then discard it until we have a value $a<7$. Then the second value $b$ can be $\le 5$ since $(6-1)*7=35$. 
 We now compute the expected value of calls to be 
-$$    \mathbb{E} \left[  \text{calls to rand7}\right] = 7/6+7/5*1/6+5/7\approx 2.114$$ 
+$$\mathbb{E} \left[  \text{calls to rand7}\right] = 7/6+7/5*1/6+5/7\approx 2.114$$ 
 which is a better bound.
 
 ## Further improvements
