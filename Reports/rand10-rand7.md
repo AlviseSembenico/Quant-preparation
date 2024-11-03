@@ -38,13 +38,44 @@ If we want to generate 2 numbers from 1 to 10, we need to generate 3 numbers fro
 If we look at the problem with a change of basis, from a base of 10 to a base of 7, we can simply get a number by multiplying by increasing powers of 7. 
 
 The code can be changed accordingly to (here we just produce new results instead of consuming the list in case is not empty).
+Note that $7^19=11398895185373143$ and $\max\{i \in \mathbb{N}: 10^i < 7^19\} = 16$.
+Therefore, we keep all the values that are smaller that $10^{16}$.
+
 ```
-
 def rand10(self):
-    s = sum([(rand7()-1)* (7**i) for i in range(19)])
+    while (s := sum([(rand7()-1)* (7**i) for i in range(19)])) > int(1e16):
+        ...
 
-    while s > 0:
-        self.result.append(s % 10)
+    while True:
+        self.cache.append(s % 10+1)
+        if s < 9:
+            break
         s = s // 10
     return self.result.pop()
 ```
+
+
+So we can generalize it now to a class in the following way:
+```
+class Rand10:
+    def __init__(self):
+        self.cache = []
+        self.compute_batch()
+        
+    def get(self):
+        if not self.cache:
+            self.compute_batch()
+        return self.cache.pop()
+        
+    def compute_batch(self):
+        while (s := sum([(rand7()-1)* (7**i) for i in range(19)])) > int(1e16):
+            ...
+
+        while True:
+            self.cache.append(s % 10+1)
+            if s < 9:
+                break
+            s = s // 10
+```
+This allow us to store the values we generate and the ammortized cost is then
+$$1+ \frac{7^{19}- 10^{16}}{7^{19}} \approx 1.1227$$
