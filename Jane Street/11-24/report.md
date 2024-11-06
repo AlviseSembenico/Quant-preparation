@@ -42,15 +42,17 @@ Let the fixed blue point be represented as $b = (x, y)$. Our objective is to cal
 
 ### Intersection Calculation
 The intersection of two circles can be complex, but it simplifies under our constraints. A more extensive derivation is available here: [Intersection Derivation](https://dassencio.org/102). For our specific case, the intersection $I$ is:
-   $$
-   I = (x^2 + y^2) \arccos \left( \frac{x}{\sqrt{x^2 + y^2}} \right) - \left( (1 - x)^2 + y^2 \right) \arccos \left( \frac{1 - x}{\sqrt{(1 - x)^2 + y^2}} \right)
-   $$
+
+$$  I = (x^2 + y^2) \arccos \left( \frac{x}{\sqrt{x^2 + y^2}} \right) - \left( (1 - x)^2 + y^2 \right) \arccos \left( \frac{1 - x}{\sqrt{(1 - x)^2 + y^2}} \right)
+$$
 
 ### Integral Formulation
 We aim to integrate over the region where $0 \leq x \leq \frac{1}{2}$ and $y \leq x$ to stay within the unit square. This results in:
-   $$
-   \int_0^{1/2} \int_0^x \frac{1}{4} (A_1 + A_2) - 2I \, dy \, dx
-   $$
+
+$$
+\int_0^{1/2} \int_0^x \frac{1}{4} (A_1 + A_2) - 2I \, dy \, dx
+$$
+
 To cover the entire interval $[0,1]$, we adjust by multiplying by $\frac{1}{x}$ for $y$ (since it’s uniformly distributed over $[0, x]$) and by $2$ for $x$. This gives the final integral:
 
 $$
